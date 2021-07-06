@@ -28,7 +28,7 @@ reset = (cube) => {
 
 // generate solution given a state
 solve = (cube) => {
-	const colours = stateToColors(cube.asString())
+	const colours = faceToColours(cube.asString())
 	const url = "http://localhost:5000/solver?colours=" + colours
 	$.ajax({
 		url: url,
