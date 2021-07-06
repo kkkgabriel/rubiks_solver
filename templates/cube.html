@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rubiks solver</title>
+	<!-- jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}"></link>
+    <!-- custom js scripts -->
+	<script type="text/javascript" src="{{ url_for('static', filename='lib/cube.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/ai_cube.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/utils.js') }}"></script>
+</head>
+<body>
+	<div class="container">
+		<!-- initialization options -->
+		<h5> Initialization options</h5>
+		<div class='row'>
+			<div class='col'>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="moves_label">Init with moves</span>
+				</div>
+				<input type="text" class="form-control" id="init_moves" placeholder="Moves" aria-describedby="moves_label">
+			</div>
+			<button id="init_with_moves" class='btn btn-info misc_btns' >init</button>
+			</div>
+
+			<div class='col'>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="colours_label">Init with colours</span>
+					</div>
+					<input type="text" class="form-control" id="init_colours" placeholder="Colours" aria-describedby="colours_label">
+				</div>
+				<button id="init_with_colours" class='btn btn-info misc_btns' >init</button>
+			</div>
+		</div>
+		<hr>
+
+		<!-- steps -->
+		<h5>Moves list</h5>
+		<div class="row m-2">
+			<div class="card">
+				<div class="card-body">
+					<p id="moves"></p>
+				</div>
+			</div>
+		</div>
+		<hr>
+
+		<!-- MISC buttons -->
+		<h5>Main cube</h5>
+		<div class='row mb-1'>
+			<div class='col'>
+				<button class='btn btn-secondary misc_btns' id='solve'>Solve</button>
+			</div>
+			<div class='col'>
+				<button class='btn btn-secondary misc_btns' id='reset'>Reset</button>
+			</div>
+		</div>
+		<div class='row mb-3'>
+			<div class='col'>
+				<button class='btn misc_btns' id='isSolved' disabled>Let me see</button>
+			</div>
+		</div>
+
+		<!-- top buttons -->
+		<div class="row">
+			<div class="col-5 top_left_panel flex">
+					<button class="btn btn-primary moves_btn">L</button>
+					<button class="btn btn-primary moves_btn">L'</button>
+			</div>
+			<div class="col-2 flex"></div>
+			<div class="col-5 top_right_panel flex">
+					<button class="btn btn-primary moves_btn">R</button>
+					<button class="btn btn-primary moves_btn">R'</button>
+			</div>
+		</div>
+
+		<!-- side buttons and cube -->
+		<div class="row">
+			<div class="col-2 left_panel flex">
+				<div class="row">
+					<button class="btn btn-primary moves_btn mb-5">U</button>
+					<button class="btn btn-primary moves_btn mt-5">D'</button>
+				</div>
+			</div>
+			<div class="col-8 cube flex" id="cube_front">
+			</div>
+			<div class="col-2 right_panel flex">
+				<div class="row">
+					<button class="btn btn-primary moves_btn mb-5">U'</button>
+					<button class="btn btn-primary moves_btn mt-5">D</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- bottom buttons -->
+		<div class="row">
+			<div class="col-2 flex"></div>
+			<div class="col-10 bottom_panel flex">
+					<button class="btn btn-primary moves_btn">F</button>
+					<button class="btn btn-primary moves_btn">F'</button>
+					<button class="btn btn-primary moves_btn">B</button>
+					<button class="btn btn-primary moves_btn">B'</button>
+			</div>
+		</div>
+
+
+		<!-- bottom cube -->
+		<div class="row">
+			<div class="col-2 right_panel flex"></div>
+			<div class="col-6 cube flex" id="cube_back"></div>
+			<div class="col-2 right_panel flex"></div>
+		</div>
+	</div>
+
+	<!-- boostrap stuff -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

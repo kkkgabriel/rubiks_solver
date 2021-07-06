@@ -1,0 +1,47 @@
+.bottom_panel {
+	justify-content: flex-end;
+}
+
+.container {
+	margin-top: 20px;
+	width: 40%;
+}
+.cube {
+	justify-content: center;
+}
+
+.flex {
+	display: flex;
+}
+
+.left_panel {
+	height: 500px;
+	justify-content: center;
+	flex-direction: column
+}
+
+.misc_btns {
+	border-color: grey;
+	width: inherit;
+}
+
+.moves_btn {
+	margin: 5px;
+	height: auto;
+	width: 50px;
+}
+
+.right_panel {
+	height: 500px;
+	justify-content: center;
+	flex-direction: column
+}
+
+.top_left_panel {
+	justify-content: flex-end;
+}
+
+.top_right_panel {
+	justify-content: flex-start;
+}
+
