@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, jsonify, request
-import rubiks
+import rubiks_solver
 app = Flask(__name__)
 
 # path to render the cube ui
@@ -12,7 +12,7 @@ def index():
 def solver():
 	if 'colours' in request.args:
 		state = request.args['colours']
-		solution = rubiks.solve(state)
+		solution = rubiks_solver.solve(state)
 		return jsonify({"succcess": True, "initial state": state, "Solution": solution})
 
 
