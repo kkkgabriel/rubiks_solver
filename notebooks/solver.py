@@ -24,7 +24,9 @@ class solver():
     #           or display the state with the best heuristic score and the moves it took to get there
     #       verbose (bool, optional, default to true): if true, will display the heuristic scores of all the 
     #           states that the solver is looking through.
-    def solve(self, maxDepth=6, prune=True, display=True, verbose=True):
+    #       earlyTermination (int, optional, default to -1): if set to > 0, solver will only explore up to 
+    #           that number of nodes.
+    def solve(self, maxDepth=6, prune=True, display=True, verbose=True, earlyTermination=-1):
         # get the current score of the cube
         currentScore = self.h((self.startCube, None))
 
@@ -36,8 +38,15 @@ class solver():
         if verbose:
             print("The starting score of the cube is : {}".format(currentScore))
 
+        count = 0
+
         # loop as long as the solution is not found
         while not self.solutionFound:
+            if count > earlyTermination and earlyTermination > 0:
+                if verbose:
+                    print("Oh no search exceeded number of iterations")
+                break
+
             # pop from the queue, break if there are no more items in the queue
             try:
                 queueItem = self.pop()
@@ -87,6 +96,9 @@ class solver():
                                 self.insert((cube.duplicate().move(m), moves + [m]))
                             elif self.h(newQueueItem) >= currentScore:
                                 self.insert((cube.duplicate().move(m), moves + [m]))
+
+            # increment count
+            count +=1
         
         # display the solution or max cube
         if display:

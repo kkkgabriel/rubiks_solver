@@ -1,6 +1,6 @@
 #------------- increments -----------------#
-numberOfPairedCornerNEdges_i = 1.5
-oneStepCornerEdgePair_i = 1.5
+numberOfPairedCornerNEdges_i = 2
+oneStepCornerEdgePair_i = 1
 middleEdgePairing_i = 1
 
 #------------- piece index (DO NOT REARRANGE) -----------------#
@@ -101,7 +101,7 @@ def middleEdgePairing(queueItem):
     return score
 
 #--------------- compound heuristics: oneStepCornerEdgePair + numberOfPairedCornerNEdges ------------------#
-def potentialEdgeCornerPairs(queueItem):
+def compound1(queueItem):
     return oneStepCornerEdgePair(queueItem) + numberOfPairedCornerNEdges(queueItem)
 
 def compound2(queueItem):
