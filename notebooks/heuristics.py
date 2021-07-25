@@ -83,6 +83,7 @@ def oneStepCornerEdgePair(queueItem):
             
     return score
 
+# -------------------- counting number of edge middle pairs -----------------------#
 def middleEdgePairing(queueItem):
     cube = queueItem[0]
     score = 0

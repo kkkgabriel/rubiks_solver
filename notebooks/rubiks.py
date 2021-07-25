@@ -3,6 +3,7 @@ import requests
 from io import BytesIO
 from random import randint
 
+# just some moves that the cube has
 MOVES = [
 	"U", "U'",
 	"D", "D'",
@@ -27,10 +28,13 @@ OPP_MOVES = {
     "B'": "B"
 }
 
+# generate a scramble with n steps
 def generateScramble(n):
 	return ' '.join([MOVES[randint(0, len(MOVES)-1)] for i in range(n)])
 
+# class of a cube 
 class cube:
+    # specify a string of 54 chars which correspond to the colours on the cube
     def __init__(self, colours='yyyyyyyyyrrrrrrrrrbbbbbbbbbwwwwwwwwwoooooooooggggggggg'):
         colours = list(colours)
         self.u = {i: n for i,n in enumerate(colours[0:9])} # y
@@ -40,27 +44,117 @@ class cube:
         self.l = {i: n for i,n in enumerate(colours[36:45])} # o
         self.b = {i: n for i,n in enumerate(colours[45:54])} # g
         self.faces = [self.u, self.r, self.f, self.d, self.l, self.b]
-
         self.moves = []
         
+    # make multiple moves by passing a single string
+    #   parameters:
+    #       moves (str): moves that you want the cube to execute, should exist in MOVES
+    #           Note: these moves should be separated by a space, prime moves can be denoted using "'"
+    #           Eg: c.move("R U R' U")
     def move(self, moves):
+        # replace all "'" with "p"
         moves = moves.replace("'", "p")
+
+        # split moves by \s
         moves = moves.split()
+
+        # loop through all moves and execute
         for move in moves:
             self.singleMove(move)
         return self
     
+    # make single moves by passsing a single string
+    #   parameters:
+    #       move (str): move that you want the cube to execute, should exist in MOVES
     def singleMove(self, move):
         eval('self.{}()'.format(move))
         return self
         
+    # check if the cube is solved by checking that all faces have the same color
     def checkSolved(self):
         for faces in self.faces:
             faceValues = list(faces.values())
             if faceValues.count(faceValues[0]) != len(faceValues):
                 return False
         return True
-        
+    
+    #--------- misc -----------#
+    # view the cube from the front
+    #   parameters:
+    #       bottom (bool): view the front from the bottom, default to False
+    def view(self, bottom=False):
+        hyphen = ''
+        if not bottom:
+            hyphen = '-'
+        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y45x{}34&fc='.format(hyphen)
+        state = self.getState()
+        full_url = url + state
+
+        response = requests.get(full_url)
+        im = Image.open(BytesIO(response.content))
+        display(im)
+
+    # view the cube from the back
+    #   parameters:
+    #       bottom (bool): view the back from the bottom, default to False
+    def view_back(self, bottom=False):
+        hyphen = ''
+        if not bottom:
+            hyphen = '-'
+        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y225x{}34&fc='.format(hyphen)
+        state = self.getState()
+        full_url = url + state
+
+        response = requests.get(full_url)
+        im = Image.open(BytesIO(response.content))
+        display(im)
+
+    # view the cube from the right
+    #   parameters:
+    #       bottom (bool): view the right from the bottom, default to False
+    def view_right(self, bottom=False):
+        hyphen = ''
+        if not bottom:
+            hyphen = '-'
+        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y135x{}34&fc='.format(hyphen)
+        state = self.getState()
+        full_url = url + state
+
+        response = requests.get(full_url)
+        im = Image.open(BytesIO(response.content))
+        display(im)
+
+    # view the cube from the left
+    #   parameters:
+    #       bottom (bool): view the left from the bottom, default to False
+    def view_left(self, bottom=False):
+        hyphen = ''
+        if not bottom:
+            hyphen = '-'
+        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y315x{}34&fc='.format(hyphen)
+        state = self.getState()
+        full_url = url + state
+
+        response = requests.get(full_url)
+        im = Image.open(BytesIO(response.content))
+        display(im)
+    
+    # gets the state of the cube as a string of 54 chars, representing each of its colours
+    #   Note: this is useful to check the state of the cube and developing heuristics
+    def getState(self):
+        return ''.join(
+            list(self.u.values()) + \
+            list(self.r.values()) + \
+            list(self.f.values()) + \
+            list(self.d.values()) + \
+            list(self.l.values()) + \
+            list(self.b.values()) \
+        )
+
+    # returns a new cube object with the same state as the current
+    def duplicate(self):
+        return cube(self.getState())
+    
     #--------- M -----------#
     def M(self):
         self.f[1], self.f[4], self.f[7], self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1], self.d[7], self.d[4], self.d[1] = \
@@ -175,71 +269,6 @@ class cube:
         self.f[0], self.f[1], self.f[2], self.l[0], self.l[1], self.l[2], self.b[0], self.b[1], self.b[2], self.r[0], self.r[1], self.r[2]
         return self
 
-    #--------- misc -----------#    
-    def view(self, bottom=False):
-        hyphen = ''
-        if not bottom:
-            hyphen = '-'
-        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y45x{}34&fc='.format(hyphen)
-        state = self.getState()
-        full_url = url + state
-
-        response = requests.get(full_url)
-        im = Image.open(BytesIO(response.content))
-        display(im)
-
-    def view_back(self, bottom=False):
-        hyphen = ''
-        if not bottom:
-            hyphen = '-'
-        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y225x{}34&fc='.format(hyphen)
-        state = self.getState()
-        full_url = url + state
-
-        response = requests.get(full_url)
-        im = Image.open(BytesIO(response.content))
-        display(im)
-
-    def view_right(self, bottom=False):
-        hyphen = ''
-        if not bottom:
-            hyphen = '-'
-        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y135x{}34&fc='.format(hyphen)
-        state = self.getState()
-        full_url = url + state
-
-        response = requests.get(full_url)
-        im = Image.open(BytesIO(response.content))
-        display(im)
-
-    def view_left(self, bottom=False):
-        hyphen = ''
-        if not bottom:
-            hyphen = '-'
-        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y315x{}34&fc='.format(hyphen)
-        state = self.getState()
-        full_url = url + state
-
-        response = requests.get(full_url)
-        im = Image.open(BytesIO(response.content))
-        display(im)
-        
-    def getState(self):
-        return ''.join(
-            list(self.u.values()) + \
-            list(self.r.values()) + \
-            list(self.f.values()) + \
-            list(self.d.values()) + \
-            list(self.l.values()) + \
-            list(self.b.values()) \
-        )
-
-    def duplicate(self):
-        return cube(self.getState())
-
-    def getScore(self, h):
-        return h(self)
-    
     #--------- private -----------#    
     def _rotateFace(self, face, clockwise=True):
         newFace = '630741852'
