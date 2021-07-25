@@ -176,8 +176,47 @@ class cube:
         return self
 
     #--------- misc -----------#    
-    def view(self):
-        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&fc='
+    def view(self, bottom=False):
+        hyphen = ''
+        if not bottom:
+            hyphen = '-'
+        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y45x{}34&fc='.format(hyphen)
+        state = self.getState()
+        full_url = url + state
+
+        response = requests.get(full_url)
+        im = Image.open(BytesIO(response.content))
+        display(im)
+
+    def view_back(self, bottom=False):
+        hyphen = ''
+        if not bottom:
+            hyphen = '-'
+        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y225x{}34&fc='.format(hyphen)
+        state = self.getState()
+        full_url = url + state
+
+        response = requests.get(full_url)
+        im = Image.open(BytesIO(response.content))
+        display(im)
+
+    def view_right(self, bottom=False):
+        hyphen = ''
+        if not bottom:
+            hyphen = '-'
+        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y135x{}34&fc='.format(hyphen)
+        state = self.getState()
+        full_url = url + state
+
+        response = requests.get(full_url)
+        im = Image.open(BytesIO(response.content))
+        display(im)
+
+    def view_left(self, bottom=False):
+        hyphen = ''
+        if not bottom:
+            hyphen = '-'
+        url = 'http://cube.rider.biz/visualcube.php?fmt=jpeg&size=150&r=y315x{}34&fc='.format(hyphen)
         state = self.getState()
         full_url = url + state
 
