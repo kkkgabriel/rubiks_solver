@@ -2,6 +2,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 from random import randint
+from copy import deepcopy
 
 # just some moves that the cube has
 MOVES = [
@@ -30,7 +31,13 @@ OPP_MOVES = {
 
 # generate a scramble with n steps
 def generateScramble(n):
-	return ' '.join([MOVES[randint(0, len(MOVES)-1)] for i in range(n)])
+    moves = [MOVES[randint(0, len(MOVES)-1)] for i in range(n)]
+    for i in range(1,n):
+        if moves[i-1] == OPP_MOVES[moves[i]]: 
+            filtered_moves = deepcopy(MOVES)
+            filtered_moves.remove(moves[i])
+            moves[i] = filtered_moves[randint(0, len(filtered_moves)-1)]
+    return ' '.join(moves)
 
 # class of a cube 
 class cube:
