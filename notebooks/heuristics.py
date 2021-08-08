@@ -100,6 +100,25 @@ def middleEdgePairing(queueItem):
                 score +=1
     return score
 
+# -------------------- counting number of 'solid rows' -----------------------#
+def numberOfSolidRows(queueItem):
+    # Row mappings
+    rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8]]
+    cube = queueItem[0]
+    score = 0
+    for face in cube.faces:
+        for row in rows:
+            count = set()
+            for tile in row:
+                count.add(face[tile])
+            if len(count) == 1:
+                score += 10
+            if len(count) == 2:
+                score += 5
+            if len(count) == 3:
+                score -= 5
+    return score
+
 #--------------- compound heuristics: oneStepCornerEdgePair + numberOfPairedCornerNEdges ------------------#
 def compound1(queueItem):
     return oneStepCornerEdgePair(queueItem) + numberOfPairedCornerNEdges(queueItem)
