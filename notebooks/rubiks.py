@@ -164,13 +164,13 @@ class cube:
     
     #--------- M -----------#
     def M(self):
-        self.f[1], self.f[4], self.f[7], self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1], self.d[7], self.d[4], self.d[1] = \
-        self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1], self.d[7], self.d[4], self.d[1], self.f[1], self.f[4], self.f[7]
+        self.f[1], self.f[4], self.f[7], self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1], self.d[1], self.d[4], self.d[7] = \
+        self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1], self.d[1], self.d[4], self.d[7], self.f[1], self.f[4], self.f[7]
         return self
     
     def Mp(self):
-        self.f[1], self.f[4], self.f[7], self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1], self.d[7], self.d[4], self.d[1] = \
-        self.d[7], self.d[4], self.d[1], self.f[1], self.f[4], self.f[7], self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1]
+        self.f[1], self.f[4], self.f[7], self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1], self.d[1], self.d[4], self.d[7] = \
+        self.d[1], self.d[4], self.d[7], self.f[1], self.f[4], self.f[7], self.u[1], self.u[4], self.u[7], self.b[7], self.b[4], self.b[1]
         return self
     
     #--------- E -----------#
@@ -186,79 +186,79 @@ class cube:
     
     #--------- S -----------#
     def S(self):
-        self.u[3], self.u[4], self.u[5], self.r[1], self.r[4], self.r[7], self.d[3], self.d[4], self.d[5], self.l[7], self.l[4], self.l[1] = \
-        self.l[7], self.l[4], self.l[1], self.u[3], self.u[4], self.u[5], self.r[1], self.r[4], self.r[7], self.d[3], self.d[4], self.d[5]
+        self.u[3], self.u[4], self.u[5], self.r[1], self.r[4], self.r[7], self.d[5], self.d[4], self.d[3], self.l[7], self.l[4], self.l[1] = \
+        self.l[7], self.l[4], self.l[1], self.u[3], self.u[4], self.u[5], self.r[1], self.r[4], self.r[7], self.d[5], self.d[4], self.d[3]
         return self
     
     def Sp(self):
-        self.u[3], self.u[4], self.u[5], self.r[1], self.r[4], self.r[7], self.d[3], self.d[4], self.d[5], self.l[7], self.l[4], self.l[1] = \
-        self.r[1], self.r[4], self.r[7], self.d[3], self.d[4], self.d[5], self.l[7], self.l[4], self.l[1], self.u[3], self.u[4], self.u[5]
+        self.u[3], self.u[4], self.u[5], self.r[1], self.r[4], self.r[7], self.d[5], self.d[4], self.d[3], self.l[7], self.l[4], self.l[1] = \
+        self.r[1], self.r[4], self.r[7], self.d[5], self.d[4], self.d[3], self.l[7], self.l[4], self.l[1], self.u[3], self.u[4], self.u[5]
         return self
         
     #--------- B -----------#
     def B(self):
         self._rotateFace(self.b)
-        self.u[0], self.u[1], self.u[2], self.r[2], self.r[5], self.r[8], self.d[0], self.d[1], self.d[2], self.l[6], self.l[3], self.l[0] = \
-        self.r[2], self.r[5], self.r[8], self.d[0], self.d[1], self.d[2], self.l[6], self.l[3], self.l[0], self.u[0], self.u[1], self.u[2]
+        self.u[0], self.u[1], self.u[2], self.r[2], self.r[5], self.r[8], self.d[8], self.d[7], self.d[6], self.l[6], self.l[3], self.l[0] = \
+        self.r[2], self.r[5], self.r[8], self.d[8], self.d[7], self.d[6], self.l[6], self.l[3], self.l[0], self.u[0], self.u[1], self.u[2]
         return self
     
     def Bp(self):
         self._rotateFace(self.b, False)
-        self.u[0], self.u[1], self.u[2], self.r[2], self.r[5], self.r[8], self.d[0], self.d[1], self.d[2], self.l[6], self.l[3], self.l[0] = \
-        self.l[6], self.l[3], self.l[0], self.u[0], self.u[1], self.u[2], self.r[2], self.r[5], self.r[8], self.d[0], self.d[1], self.d[2]
+        self.u[0], self.u[1], self.u[2], self.r[2], self.r[5], self.r[8], self.d[8], self.d[7], self.d[6], self.l[6], self.l[3], self.l[0] = \
+        self.l[6], self.l[3], self.l[0], self.u[0], self.u[1], self.u[2], self.r[2], self.r[5], self.r[8], self.d[8], self.d[7], self.d[6]
         return self
     
         
     #--------- F -----------#
     def F(self):
         self._rotateFace(self.f)
-        self.u[6], self.u[7], self.u[8], self.r[0], self.r[3], self.r[6], self.d[6], self.d[7], self.d[8], self.l[8], self.l[5], self.l[2] = \
-        self.l[8], self.l[5], self.l[2], self.u[6], self.u[7], self.u[8], self.r[0], self.r[3], self.r[6], self.d[6], self.d[7], self.d[8]
+        self.u[6], self.u[7], self.u[8], self.r[0], self.r[3], self.r[6], self.d[2], self.d[1], self.d[0], self.l[8], self.l[5], self.l[2] = \
+        self.l[8], self.l[5], self.l[2], self.u[6], self.u[7], self.u[8], self.r[0], self.r[3], self.r[6], self.d[2], self.d[1], self.d[0]
         return self
     
     def Fp(self):
         self._rotateFace(self.f, False)
-        self.u[6], self.u[7], self.u[8], self.r[0], self.r[3], self.r[6], self.d[6], self.d[7], self.d[8], self.l[8], self.l[5], self.l[2] = \
-        self.r[0], self.r[3], self.r[6], self.d[6], self.d[7], self.d[8], self.l[8], self.l[5], self.l[2], self.u[6], self.u[7], self.u[8]
+        self.u[6], self.u[7], self.u[8], self.r[0], self.r[3], self.r[6], self.d[2], self.d[1], self.d[0], self.l[8], self.l[5], self.l[2] = \
+        self.r[0], self.r[3], self.r[6], self.d[2], self.d[1], self.d[0], self.l[8], self.l[5], self.l[2], self.u[6], self.u[7], self.u[8]
         return self
         
     #--------- L -----------#
     def L(self):
         self._rotateFace(self.l)
-        self.f[0], self.f[3], self.f[6], self.u[0], self.u[3], self.u[6], self.b[8], self.b[5], self.b[2], self.d[8], self.d[5], self.d[2] = \
-        self.u[0], self.u[3], self.u[6], self.b[8], self.b[5], self.b[2], self.d[8], self.d[5], self.d[2], self.f[0], self.f[3], self.f[6]
+        self.f[0], self.f[3], self.f[6], self.u[0], self.u[3], self.u[6], self.b[8], self.b[5], self.b[2], self.d[0], self.d[3], self.d[6] = \
+        self.u[0], self.u[3], self.u[6], self.b[8], self.b[5], self.b[2], self.d[0], self.d[3], self.d[6], self.f[0], self.f[3], self.f[6]
         return self
         
         
     def Lp(self):
         self._rotateFace(self.l, False)
-        self.f[0], self.f[3], self.f[6], self.u[0], self.u[3], self.u[6], self.b[8], self.b[5], self.b[2], self.d[8], self.d[5], self.d[2] = \
-        self.d[8], self.d[5], self.d[2], self.f[0], self.f[3], self.f[6], self.u[0], self.u[3], self.u[6], self.b[8], self.b[5], self.b[2]
+        self.f[0], self.f[3], self.f[6], self.u[0], self.u[3], self.u[6], self.b[8], self.b[5], self.b[2], self.d[6], self.d[3], self.d[0] = \
+        self.d[0], self.d[3], self.d[6], self.f[0], self.f[3], self.f[6], self.u[0], self.u[3], self.u[6], self.b[8], self.b[5], self.b[2]
         return self
         
     #--------- R -----------#
     def R(self):
         self._rotateFace(self.r)
-        self.f[2], self.f[5], self.f[8], self.u[2], self.u[5], self.u[8], self.b[6], self.b[3], self.b[0], self.d[6], self.d[3], self.d[0] = \
-        self.d[6], self.d[3], self.d[0], self.f[2], self.f[5], self.f[8], self.u[2], self.u[5], self.u[8], self.b[6], self.b[3], self.b[0]
+        self.f[2], self.f[5], self.f[8], self.u[2], self.u[5], self.u[8], self.b[6], self.b[3], self.b[0], self.d[2], self.d[5], self.d[8] = \
+        self.d[2], self.d[5], self.d[8], self.f[2], self.f[5], self.f[8], self.u[2], self.u[5], self.u[8], self.b[6], self.b[3], self.b[0]
         return self
     
     def Rp(self):
         self._rotateFace(self.r, False)
-        self.f[2], self.f[5], self.f[8], self.u[2], self.u[5], self.u[8], self.b[6], self.b[3], self.b[0], self.d[6], self.d[3], self.d[0] = \
-        self.u[2], self.u[5], self.u[8], self.b[6], self.b[3], self.b[0], self.d[6], self.d[3], self.d[0], self.f[2], self.f[5], self.f[8]
+        self.f[2], self.f[5], self.f[8], self.u[2], self.u[5], self.u[8], self.b[6], self.b[3], self.b[0], self.d[2], self.d[5], self.d[8] = \
+        self.u[2], self.u[5], self.u[8], self.b[6], self.b[3], self.b[0], self.d[2], self.d[5], self.d[8], self.f[2], self.f[5], self.f[8]
         return self
     
     
     #--------- D -----------#
     def D(self):
-        self._rotateFace(self.d, False)
+        self._rotateFace(self.d)
         self.r[6], self.r[7], self.r[8], self.f[6], self.f[7], self.f[8], self.l[6], self.l[7], self.l[8], self.b[6], self.b[7], self.b[8] = \
         self.f[6], self.f[7], self.f[8], self.l[6], self.l[7], self.l[8], self.b[6], self.b[7], self.b[8], self.r[6], self.r[7], self.r[8]
         return self
     
     def Dp(self):
-        self._rotateFace(self.d)
+        self._rotateFace(self.d, False)
         self.r[6], self.r[7], self.r[8], self.f[6], self.f[7], self.f[8], self.l[6], self.l[7], self.l[8], self.b[6], self.b[7], self.b[8] = \
         self.b[6], self.b[7], self.b[8], self.r[6], self.r[7], self.r[8], self.f[6], self.f[7], self.f[8], self.l[6], self.l[7], self.l[8]
         return self
