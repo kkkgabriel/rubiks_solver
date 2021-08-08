@@ -1,7 +1,9 @@
 #------------- increments -----------------#
-numberOfPairedCornerNEdges_i = 2
-oneStepCornerEdgePair_i = 1
-middleEdgePairing_i = 1
+numberOfPairedCornerNEdges_i = 5
+numberOfPairedCornerNEdges_d = 2
+oneStepCornerEdgePair_i = 3
+oneStepCornerEdgePair_d = 1
+middleEdgePairing_i = 2
 
 #------------- piece index (DO NOT REARRANGE) -----------------#
 top_corners = [ # clockwise starting from top piece
@@ -53,6 +55,8 @@ def numberOfPairedCornerNEdges(queueItem):
         (n3, n4) = p2
         if state[n1] == state[n2] and state[n3] == state[n4]:
             score += numberOfPairedCornerNEdges_i
+        else:
+            score -= numberOfPairedCornerNEdges_d
     return score
 
 # -------------------- counting number of edge corner pairs that are one step away -----------------------#
@@ -60,27 +64,31 @@ def oneStepCornerEdgePair(queueItem):
     cube = queueItem[0]
     score = 0
     state = cube.getState()
+    score_increment = 0
     for top_corner in top_corners: # 4 corners
         for side_edge in side_edges:
             if state[side_edge[0]] == state[top_corner[1]] and state[side_edge[1]] == state[top_corner[2]]:
-                score += oneStepCornerEdgePair_i
+                score_increment += oneStepCornerEdgePair_i
                 
         for top_edge in top_edges:
             if state[top_edge[0]] == state[top_corner[0]] and state[top_edge[1]] == state[top_corner[2]]:
-                score += oneStepCornerEdgePair_i
+                score_increment += oneStepCornerEdgePair_i
             if state[top_edge[0]] == state[top_corner[0]] and state[top_edge[1]] == state[top_corner[1]]:
-                score += oneStepCornerEdgePair_i
+                score_increment += oneStepCornerEdgePair_i
                 
     for bottom_corner in bottom_corners:
         for bottom_edge in bottom_edges:
             if state[bottom_edge[0]] == state[bottom_corner[0]] and state[bottom_edge[1]] == state[bottom_corner[1]]:
-                score += oneStepCornerEdgePair_i
+                score_increment += oneStepCornerEdgePair_i
             if state[bottom_edge[0]] == state[bottom_corner[0]] and state[bottom_edge[1]] == state[bottom_corner[2]]:
-                score += oneStepCornerEdgePair_i
+                score_increment += oneStepCornerEdgePair_i
         for side_edge in side_edges:
             if state[side_edge[0]] == state[bottom_corner[2]] and state[side_edge[1]] == state[bottom_corner[1]]:
-                score += oneStepCornerEdgePair_i
-            
+                score_increment += oneStepCornerEdgePair_i
+    if score_increment > 0:
+        score += score_increment
+    else:
+        score -= oneStepCornerEdgePair_d
     return score
 
 # -------------------- counting number of edge middle pairs -----------------------#
@@ -112,11 +120,11 @@ def numberOfSolidRows(queueItem):
             for tile in row:
                 count.add(face[tile])
             if len(count) == 1:
-                score += 10
+                score += 4
             if len(count) == 2:
-                score += 5
+                score += 2
             if len(count) == 3:
-                score -= 5
+                score -= 2
     return score
 
 # -------------------- counting number of 'solid faces' -----------------------#
@@ -128,7 +136,7 @@ def numberOfSolidFaces(queueItem):
         faceCount = set()
         for color in face.values():
             faceCount.add(color)
-        score += ((5 - len(faceCount)) / 4) * 10
+        score += ((5 - len(faceCount)) / 4) * 0.5
 
     return score
 
@@ -142,23 +150,29 @@ def numberOfSolidRowsWithSolidFace(queueItem):
         faceCount = set()
         for color in face.values():
             faceCount.add(color)
-        score += ((5 - len(faceCount)) / 4) * 20
+        score += ((5 - len(faceCount)) / 4) * 0.5
 
         for row in rows:
             rowCount = set()
             for tile in row:
                 rowCount.add(face[tile])
             if len(rowCount) == 1:
-                score += 10
+                score += 4
             if len(rowCount) == 2:
-                score += 5
+                score += 2
             if len(rowCount) == 3:
-                score -= 5
+                score -= 2
     return score
 
 #--------------- compound heuristics: oneStepCornerEdgePair + numberOfPairedCornerNEdges ------------------#
-def compound1(queueItem):
-    return oneStepCornerEdgePair(queueItem) + numberOfPairedCornerNEdges(queueItem)
-
-def compound2(queueItem):
+def adaptedCFOP(queueItem):
     return oneStepCornerEdgePair(queueItem) + numberOfPairedCornerNEdges(queueItem) + middleEdgePairing(queueItem)
+
+def adaptedCFOP2(queueItem):
+    return numberOfPairedCornerNEdges(queueItem) + numberOfSolidFaces(queueItem)
+
+def adaptedCFOP3(queueItem):
+    return numberOfPairedCornerNEdges(queueItem) + middleEdgePairing(queueItem) + numberOfSolidFaces(queueItem)
+
+def adaptedCFOP4(queueItem):
+    return numberOfPairedCornerNEdges(queueItem) + middleEdgePairing(queueItem)
