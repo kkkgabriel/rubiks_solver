@@ -13,6 +13,9 @@ def solver():
 	if 'colours' in request.args:
 		state = request.args['colours']
 		solution = rubiks_solver.solve(state)
+		success = False
+		if solution:
+			success = True
 		return jsonify({"succcess": True, "initial state": state, "Solution": solution})
 
 
