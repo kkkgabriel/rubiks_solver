@@ -11,7 +11,10 @@ MOVES = [
 	"R", "R'",
 	"L", "L'",
 	"F", "F'",
-	"B", "B'"
+	"B", "B'",
+    "M", "M'",
+    "E", "E'",
+    "S", "S'"
 ]
 
 OPP_MOVES = {
@@ -26,7 +29,13 @@ OPP_MOVES = {
     "F": "F'",
     "F'": "F",
     "B": "B'",
-    "B'": "B"
+    "B'": "B",
+    "M": "M'",
+    "E": "E'",
+    "S": "S'",
+    "M'": "M'",
+    "E'": "E",
+    "S'": "S"
 }
 
 # generate a scramble with n steps

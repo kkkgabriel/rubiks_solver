@@ -62,6 +62,11 @@
 				<button class='btn btn-secondary misc_btns' id='reset'>Reset</button>
 			</div>
 		</div>
+		<div class='row mb-1'>
+			<div class='col'>
+				<button class='btn misc_btns' id='solution' disabled>Solution will be displayed here</button>
+			</div>
+		</div>
 		<div class='row mb-3'>
 			<div class='col'>
 				<button class='btn misc_btns' id='isSolved' disabled>Let me see</button>
@@ -70,52 +75,36 @@
 
 		<!-- top buttons -->
 		<div class="row">
-			<div class="col-5 top_left_panel flex">
-					<button class="btn btn-primary moves_btn">L</button>
-					<button class="btn btn-primary moves_btn">L'</button>
-			</div>
-			<div class="col-2 flex"></div>
-			<div class="col-5 top_right_panel flex">
-					<button class="btn btn-primary moves_btn">R</button>
-					<button class="btn btn-primary moves_btn">R'</button>
-			</div>
+			<button class="btn btn-primary moves_btn">L</button>
+			<button class="btn btn-primary moves_btn">R</button>
+			<button class="btn btn-primary moves_btn">U</button>
+			<button class="btn btn-primary moves_btn">D</button>
+			<button class="btn btn-primary moves_btn">F</button>
+			<button class="btn btn-primary moves_btn">B</button>
+			<button class="btn btn-primary moves_btn">M</button>
+			<button class="btn btn-primary moves_btn">E</button>
+			<button class="btn btn-primary moves_btn">S</button>
+		</div>
+		<div class="row">
+			<button class="btn btn-primary moves_btn">L'</button>
+			<button class="btn btn-primary moves_btn">R'</button>
+			<button class="btn btn-primary moves_btn">U'</button>
+			<button class="btn btn-primary moves_btn">D'</button>
+			<button class="btn btn-primary moves_btn">F'</button>
+			<button class="btn btn-primary moves_btn">B'</button>
+			<button class="btn btn-primary moves_btn">M'</button>
+			<button class="btn btn-primary moves_btn">E'</button>
+			<button class="btn btn-primary moves_btn">S'</button>
 		</div>
 
 		<!-- side buttons and cube -->
 		<div class="row">
-			<div class="col-2 left_panel flex">
-				<div class="row">
-					<button class="btn btn-primary moves_btn mb-5">U</button>
-					<button class="btn btn-primary moves_btn mt-5">D'</button>
-				</div>
-			</div>
-			<div class="col-8 cube flex" id="cube_front">
-			</div>
-			<div class="col-2 right_panel flex">
-				<div class="row">
-					<button class="btn btn-primary moves_btn mb-5">U'</button>
-					<button class="btn btn-primary moves_btn mt-5">D</button>
-				</div>
-			</div>
-		</div>
-
-		<!-- bottom buttons -->
-		<div class="row">
-			<div class="col-2 flex"></div>
-			<div class="col-10 bottom_panel flex">
-					<button class="btn btn-primary moves_btn">F</button>
-					<button class="btn btn-primary moves_btn">F'</button>
-					<button class="btn btn-primary moves_btn">B</button>
-					<button class="btn btn-primary moves_btn">B'</button>
-			</div>
-		</div>
-
-
-		<!-- bottom cube -->
-		<div class="row">
-			<div class="col-2 right_panel flex"></div>
+			<div class="col-6 cube flex" id="cube_front"></div>
 			<div class="col-6 cube flex" id="cube_back"></div>
-			<div class="col-2 right_panel flex"></div>
+		</div>
+		<div class="row">
+			<div class="col-6 cube"><h6>Cube Front</h6></div>
+			<div class="col-6 cube"><h6>Cube Back and bottom</h6></div>
 		</div>
 	</div>
 

@@ -1,3 +1,8 @@
+.align_left {
+	flex-direction: column;
+	justify-content: left;
+}
+
 .bottom_panel {
 	justify-content: flex-end;
 }

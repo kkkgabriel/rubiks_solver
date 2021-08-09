@@ -16,7 +16,7 @@ def solver():
 		success = False
 		if solution:
 			success = True
-		return jsonify({"succcess": True, "initial state": state, "Solution": solution})
+		return jsonify({"success": success, "initial state": state, "solution": solution})
 
 
 if __name__ == '__main__':

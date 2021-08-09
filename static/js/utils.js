@@ -24,6 +24,7 @@ reset = (cube) => {
 	$('#moves').html('')
 	$('#init_colours').val('')
 	$('#init_moves').val('')
+	$('#solution').html("Solution will be displayed here")
 }
 
 // generate solution given a state
@@ -33,7 +34,11 @@ solve = (cube) => {
 	$.ajax({
 		url: url,
 		success: (result) => {
-			console.log(result)
+			if (result.success) {
+				$('#solution').html("Solution found: " + result.solution)
+			} else {
+				$('#solution').html("No solution found ):")
+			}
 		}
 	});
 }
@@ -51,7 +56,7 @@ renderCube = (cube) => {
 	const colors = faceToColours(cube.asString())
 
 	// make url
-	const url = "http://cube.crider.co.uk/visualcube.png?size=500&fc=" + colors
+	const url = "http://cube.crider.co.uk/visualcube.png?size=300&fc=" + colors
 
 	// render cube front
 	$('#cube_front').html("<img src=\"" + url + "\">")
