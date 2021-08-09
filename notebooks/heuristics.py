@@ -169,10 +169,4 @@ def adaptedCFOP(queueItem):
     return oneStepCornerEdgePair(queueItem) + numberOfPairedCornerNEdges(queueItem) + middleEdgePairing(queueItem)
 
 def adaptedCFOP2(queueItem):
-    return numberOfPairedCornerNEdges(queueItem) + numberOfSolidFaces(queueItem)
-
-def adaptedCFOP3(queueItem):
-    return numberOfPairedCornerNEdges(queueItem) + middleEdgePairing(queueItem) + numberOfSolidFaces(queueItem)
-
-def adaptedCFOP4(queueItem):
-    return numberOfPairedCornerNEdges(queueItem) + middleEdgePairing(queueItem)
+    return numberOfPairedCornerNEdges(queueItem) + numberOfSolidRowsWithSolidFace(queueItem)
