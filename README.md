@@ -8,7 +8,10 @@
 - See the app
 > Open ```localhost:5000``` in browser
 
-### Useful links
+### Demo
+See https://ai-rubiks-solver.herokuapp.com/
+
+### References
 - Source code and API Reference of cube.js: https://github.com/ldez/cubejs
 - A demo that doesnt work: http://ldez.github.io/cubejs/
 
