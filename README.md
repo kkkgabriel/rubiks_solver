@@ -12,6 +12,6 @@
 See https://ai-rubiks-solver.herokuapp.com/
 
 ### References
-- Source code and API Reference of cube.js: https://github.com/ldez/cubejs
+- Source code and API Reference of cube.js: x s
 - A demo that doesnt work: http://ldez.github.io/cubejs/
 
