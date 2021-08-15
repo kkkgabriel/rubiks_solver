@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Rubiks solver</title>
+	<title>AI Rubik's Cube Solver</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}">
 	<!-- jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Bootstrap CSS -->
@@ -16,6 +17,10 @@
 </head>
 <body>
 	<div class="container">
+        <div id="header"><h1>AI Rubik's Cube Solver</h1></div>
+
+        <h4>Initialize the State of the Cube</h4>
+
 		<!-- initialization options -->
 		<h5> Initialization options</h5>
 		<div class='row'>
@@ -39,9 +44,34 @@
 				<button id="init_with_colours" class='btn btn-info misc_btns' >init</button>
 			</div>
 		</div>
+
+        <!-- Moves Buttons -->
+		<div class="row moves-button">
+			<button class="btn btn-primary moves_btn">L</button>
+			<button class="btn btn-primary moves_btn">R</button>
+			<button class="btn btn-primary moves_btn">U</button>
+			<button class="btn btn-primary moves_btn">D</button>
+			<button class="btn btn-primary moves_btn">F</button>
+			<button class="btn btn-primary moves_btn">B</button>
+			<button class="btn btn-primary moves_btn">M</button>
+			<button class="btn btn-primary moves_btn">E</button>
+			<button class="btn btn-primary moves_btn">S</button>
+		</div>
+		<div class="row moves-button">
+			<button class="btn btn-primary moves_btn">L'</button>
+			<button class="btn btn-primary moves_btn">R'</button>
+			<button class="btn btn-primary moves_btn">U'</button>
+			<button class="btn btn-primary moves_btn">D'</button>
+			<button class="btn btn-primary moves_btn">F'</button>
+			<button class="btn btn-primary moves_btn">B'</button>
+			<button class="btn btn-primary moves_btn">M'</button>
+			<button class="btn btn-primary moves_btn">E'</button>
+			<button class="btn btn-primary moves_btn">S'</button>
+		</div>
+
 		<hr>
 
-		<!-- steps -->
+		<!-- Input of Current Moves -->
 		<h5>Moves list</h5>
 		<div class="row m-2">
 			<div class="card">
@@ -73,29 +103,7 @@
 			</div>
 		</div>
 
-		<!-- top buttons -->
-		<div class="row">
-			<button class="btn btn-primary moves_btn">L</button>
-			<button class="btn btn-primary moves_btn">R</button>
-			<button class="btn btn-primary moves_btn">U</button>
-			<button class="btn btn-primary moves_btn">D</button>
-			<button class="btn btn-primary moves_btn">F</button>
-			<button class="btn btn-primary moves_btn">B</button>
-			<button class="btn btn-primary moves_btn">M</button>
-			<button class="btn btn-primary moves_btn">E</button>
-			<button class="btn btn-primary moves_btn">S</button>
-		</div>
-		<div class="row">
-			<button class="btn btn-primary moves_btn">L'</button>
-			<button class="btn btn-primary moves_btn">R'</button>
-			<button class="btn btn-primary moves_btn">U'</button>
-			<button class="btn btn-primary moves_btn">D'</button>
-			<button class="btn btn-primary moves_btn">F'</button>
-			<button class="btn btn-primary moves_btn">B'</button>
-			<button class="btn btn-primary moves_btn">M'</button>
-			<button class="btn btn-primary moves_btn">E'</button>
-			<button class="btn btn-primary moves_btn">S'</button>
-		</div>
+
 
 		<!-- side buttons and cube -->
 		<div class="row">
@@ -103,8 +111,8 @@
 			<div class="col-6 cube flex" id="cube_back"></div>
 		</div>
 		<div class="row">
-			<div class="col-6 cube"><h6>Cube Front</h6></div>
-			<div class="col-6 cube"><h6>Cube Back and bottom</h6></div>
+			<div class="col-6 cube"><h6>Cube Front View</h6></div>
+			<div class="col-6 cube"><h6>Cube Back & Bottom View</h6></div>
 		</div>
 	</div>
 
