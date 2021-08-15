@@ -42,6 +42,12 @@ resetWithoutClearingInputs = (cube, type='') => {
 
 // generate solution given a state
 solve = (cube) => {
+	// Initialize Loading state
+	$('#solution').removeClass('btn-danger');
+	$('#solution').removeClass('btn-success');
+	$('#solution').html("Solving...")
+
+	// Find Solution
 	const colours = faceToColours(cube.asString())
 	// const url = "http://localhost:5000/solver?colours=" + colours
 	const url = "/solver?colours=" + colours
@@ -49,8 +55,12 @@ solve = (cube) => {
 		url: url,
 		success: (result) => {
 			if (result.success) {
+				$('#solution').removeClass('btn-danger');
+				$('#solution').addClass('btn-success');
 				$('#solution').html("Solution found: " + result.solution)
 			} else {
+				$('#solution').removeClass('btn-success');
+				$('#solution').addClass('btn-danger');
 				$('#solution').html("No solution found ):")
 			}
 		}

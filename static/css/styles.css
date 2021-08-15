@@ -3,7 +3,7 @@
 	justify-content: left;
 }
 
-#header {
+.header {
 	background: rgb(61,255,242);
 	background: linear-gradient(124deg, rgba(61,255,242,1) 0%, rgba(72,236,82,1) 24%, rgba(185,189,83,1) 44%, rgba(199,134,83,1) 67%, rgba(219,83,83,1) 89%);
 	color: white;
