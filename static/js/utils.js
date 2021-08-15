@@ -27,6 +27,19 @@ reset = (cube) => {
 	$('#solution').html("Solution will be displayed here")
 }
 
+// reset the state of the cube without clearing the inputs needed for initialization
+resetWithoutClearingInputs = (cube, type='') => {
+	cube.identity()
+	renderCube(cube)
+	$('#moves').html('')
+	if(type === 'moves'){
+		$('#init_colours').val('')
+	}else{
+		$('#init_moves').val('')
+	}
+	$('#solution').html("Solution will be displayed here")
+}
+
 // generate solution given a state
 solve = (cube) => {
 	const colours = faceToColours(cube.asString())
@@ -46,6 +59,7 @@ solve = (cube) => {
 
 // move the cube
 moveCube = (cube, move) => {
+	$('#init_colours').val('')
 	cube.move(move)
 	renderCube(cube)
 	renderMoves(move)
