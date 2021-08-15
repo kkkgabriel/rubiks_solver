@@ -124,8 +124,7 @@
     <!-- Temporary alert of https -->
     <script>
         if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.startsWith("localhost")) && (window.location.protocol!="http:")) {
-           window.location.protocol = "http:";
-           window.location.reload();
+           alert("Please use http instead. Visit http://ai-rubiks-solver.herokuapp.com/")
         }
     </script>
 </body>
