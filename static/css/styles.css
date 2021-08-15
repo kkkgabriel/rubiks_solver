@@ -3,6 +3,18 @@
 	justify-content: left;
 }
 
+.header {
+	background: rgb(61,255,242);
+	background: linear-gradient(124deg, rgba(61,255,242,1) 0%, rgba(72,236,82,1) 24%, rgba(185,189,83,1) 44%, rgba(199,134,83,1) 67%, rgba(219,83,83,1) 89%);
+	color: white;
+	text-align: center;
+	border-radius: 10px;
+	margin-bottom: 35px;
+}
+.description{
+	font-size: 11px;
+}
+
 .bottom_panel {
 	justify-content: flex-end;
 }
@@ -13,6 +25,7 @@
 }
 .cube {
 	justify-content: center;
+	text-align: center;
 }
 
 .flex {
@@ -34,6 +47,10 @@
 	margin: 5px;
 	height: auto;
 	width: 50px;
+}
+
+.moves-button {
+	justify-content: center;
 }
 
 .right_panel {

@@ -27,8 +27,27 @@ reset = (cube) => {
 	$('#solution').html("Solution will be displayed here")
 }
 
+// reset the state of the cube without clearing the inputs needed for initialization
+resetWithoutClearingInputs = (cube, type='') => {
+	cube.identity()
+	renderCube(cube)
+	$('#moves').html('')
+	if(type === 'moves'){
+		$('#init_colours').val('')
+	}else{
+		$('#init_moves').val('')
+	}
+	$('#solution').html("Solution will be displayed here")
+}
+
 // generate solution given a state
 solve = (cube) => {
+	// Initialize Loading state
+	$('#solution').removeClass('btn-danger');
+	$('#solution').removeClass('btn-success');
+	$('#solution').html("Solving...")
+
+	// Find Solution
 	const colours = faceToColours(cube.asString())
 	// const url = "http://localhost:5000/solver?colours=" + colours
 	const url = "/solver?colours=" + colours
@@ -36,8 +55,12 @@ solve = (cube) => {
 		url: url,
 		success: (result) => {
 			if (result.success) {
+				$('#solution').removeClass('btn-danger');
+				$('#solution').addClass('btn-success');
 				$('#solution').html("Solution found: " + result.solution)
 			} else {
+				$('#solution').removeClass('btn-success');
+				$('#solution').addClass('btn-danger');
 				$('#solution').html("No solution found ):")
 			}
 		}
@@ -46,6 +69,7 @@ solve = (cube) => {
 
 // move the cube
 moveCube = (cube, move) => {
+	$('#init_colours').val('')
 	cube.move(move)
 	renderCube(cube)
 	renderMoves(move)
