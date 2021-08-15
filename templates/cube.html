@@ -19,29 +19,30 @@
 	<div class="container">
         <div id="header"><h1>AI Rubik's Cube Solver</h1></div>
 
-        <h4>Initialize the State of the Cube</h4>
+        <h4>Initialize State of the Cube</h4>
 
 		<!-- initialization options -->
-		<h5> Initialization options</h5>
+		<h5>Initialize with moves or colours</h5>
 		<div class='row'>
 			<div class='col'>
-			<div class="input-group mb-3">
+			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="moves_label">Init with moves</span>
 				</div>
 				<input type="text" class="form-control" id="init_moves" placeholder="Moves" aria-describedby="moves_label">
-			</div>
-			<button id="init_with_moves" class='btn btn-info misc_btns' >init</button>
+			</div><div class="description">(E.g. L R U' D)</div>
+			<button id="init_with_moves" class='btn btn-info misc_btns mt-2' >init</button>
 			</div>
 
 			<div class='col'>
-				<div class="input-group mb-3">
+				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="colours_label">Init with colours</span>
 					</div>
 					<input type="text" class="form-control" id="init_colours" placeholder="Colours" aria-describedby="colours_label">
 				</div>
-				<button id="init_with_colours" class='btn btn-info misc_btns' >init</button>
+                <div class="description">(E.g. ggoggbrrbrryyyyyrryywoooyybbbrbbwbbwooggwwooogwwgrrgww)</div>
+				<button id="init_with_colours" class='btn btn-info misc_btns mt-2' >init</button>
 			</div>
 		</div>
 

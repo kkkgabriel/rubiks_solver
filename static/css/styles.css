@@ -11,6 +11,9 @@
 	border-radius: 10px;
 	margin-bottom: 35px;
 }
+.description{
+	font-size: 11px;
+}
 
 .bottom_panel {
 	justify-content: flex-end;
