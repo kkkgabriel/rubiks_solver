@@ -71,10 +71,8 @@
 			<button class="btn btn-primary moves_btn">S'</button>
 		</div>
 
-		<hr>
-
 		<!-- Input of Current Moves -->
-		<h5>Current list of moves</h5>
+		<h5 class="mt-3">Current list of moves</h5>
 		<div class="row m-2">
 			<div class="card">
 				<div class="card-body">
@@ -85,7 +83,7 @@
 		<hr>
 
 		<!-- MISC buttons -->
-		<h3>Solve the Cube</h3>
+		<h3>Get Solution</h3>
 		<div class='row mb-1'>
 			<div class='col'>
 				<button class='btn btn-secondary misc_btns' id='solve'>Solve</button>
@@ -100,15 +98,11 @@
 				<button class='btn misc_btns' id='solution' disabled>Solution will be displayed here</button>
 			</div>
 		</div>
-		<div class='row mb-3'>
-			<div class='col'>
-				<button class='btn misc_btns' id='isSolved' disabled>Let me see</button>
-			</div>
-		</div>
+        <hr>
 
 
-
-		<!-- side buttons and cube -->
+		<!-- Picture of Cubes -->
+        <h3>Current State of the Cube</h3>
 		<div class="row">
 			<div class="col-6 cube flex" id="cube_front"></div>
 			<div class="col-6 cube flex" id="cube_back"></div>
@@ -116,6 +110,11 @@
 		<div class="row">
 			<div class="col-6 cube"><h6>Cube Front View</h6></div>
 			<div class="col-6 cube"><h6>Cube Back & Bottom View</h6></div>
+		</div>
+        <div class='row mb-3'>
+			<div class='col'>
+				<button class='btn misc_btns' id='isSolved' disabled>Let me see</button>
+			</div>
 		</div>
 	</div>
 
