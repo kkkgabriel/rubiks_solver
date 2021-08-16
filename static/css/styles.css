@@ -12,7 +12,8 @@
 	margin-bottom: 35px;
 }
 .description{
-	font-size: 8px;
+	font-size: 12px;
+	white-space: nowrap;
 }
 
 .bottom_panel {
@@ -21,8 +22,18 @@
 
 .container {
 	margin-top: 20px;
-	width: 40%;
-	min-width: 800px;
+}
+
+@media (min-width:700px){
+	.container {
+	width: 90%;
+	}
+}
+
+@media (min-width:1281px){
+	.container {
+	width: 50%;
+	}
 }
 
 .cube {
