@@ -22,7 +22,9 @@
 .container {
 	margin-top: 20px;
 	width: 40%;
+	min-width: 800px;
 }
+
 .cube {
 	justify-content: center;
 	text-align: center;
