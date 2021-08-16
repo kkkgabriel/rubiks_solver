@@ -24,6 +24,8 @@ reset = (cube) => {
 	$('#moves').html('')
 	$('#init_colours').val('')
 	$('#init_moves').val('')
+	$('#solution').removeClass('btn-danger');
+	$('#solution').removeClass('btn-success');
 	$('#solution').html("Solution will be displayed here")
 }
 
